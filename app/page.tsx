@@ -238,9 +238,6 @@ export default async function Home() {
             <p>
               <span className="font-semibold text-red-900">Phone:</span> (616) 259-5306
             </p>
-            <p>
-              <span className="font-semibold text-red-900">Address:</span> Grand Rapids, MI 49503
-            </p>
             <p className="pt-2">
               Please contact Adam Rykse for more information about the Lake Michigan Power Leagues.
             </p>
