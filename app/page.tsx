@@ -45,7 +45,6 @@ async function getPowerLeagueData(): Promise<PowerLeague[]> {
     }`;
     
     const data = await client.fetch(query);
-    console.log(data);
     return data || [];
   } catch (error) {
     console.error("Error fetching Power League data:", error);
@@ -112,7 +111,7 @@ export default async function Home() {
       <Navbar />
       <PageHeader
         title="Lake Michigan Power Leagues"
-        subtitle="West Michigan Volleyball Tournaments"
+        subtitle="West Michigan & NW Indiana"
       />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
@@ -226,31 +225,26 @@ export default async function Home() {
           </div>
         ))}
 
-        {/* AAU Information - Displayed once after all leagues */}
+        {/* Contact Information - Displayed once after all leagues */}
         <div className="max-w-4xl mx-auto space-y-4 text-base leading-relaxed text-gray-700 bg-red-50 p-6 rounded-lg mt-12">
-          <p>
-            The AAU Super Regional is a National AAU Sponsored Event.
-            Winners in each age division will have all or part of their
-            fee waived for AAU Nationals. The refund is a sliding scale
-            100%-30% based on number of teams entered in a division. 16
-            teams equals full refund, any less than 16 teams would be paid
-            on a percentage basis.
-          </p>
-          <p>
-            Inside Out will guarantee a full entry fee to the 1st place
-            team in each Open division.
-          </p>
-          <ul className="list-disc list-inside space-y-2">
-            <li>
-              This event is sanctioned by the Amateur Athletic Union of
-              the U. S., Inc.
-            </li>
-            <li>All participants must have a current AAU membership.</li>
-            <li>
-              AAU membership may not be included as part of the entry fee
-              to the event.
-            </li>
-          </ul>
+          <h2 className="text-2xl font-bold text-red-900 mb-4">Contact Information</h2>
+          <div className="space-y-3">
+            <p>
+              <span className="font-semibold text-red-900">Email:</span>{" "}
+              <a href="mailto:admin@lkmichpl.org" className="text-red-600 hover:text-red-800 hover:underline transition-colors">
+                admin@lkmichpl.org
+              </a>
+            </p>
+            <p>
+              <span className="font-semibold text-red-900">Phone:</span> (616) 259-5306
+            </p>
+            <p>
+              <span className="font-semibold text-red-900">Address:</span> Grand Rapids, MI 49503
+            </p>
+            <p className="pt-2">
+              Please contact Adam Rykse for more information about the Lake Michigan Power Leagues.
+            </p>
+          </div>
         </div>
 
         {/* AAU Logos */}

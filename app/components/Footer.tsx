@@ -39,7 +39,7 @@ export default function Footer() {
           </a>
         </div>
         <p className="text-center text-sm text-gray-400">
-          © 2025 Lakeshore Volleyfest
+          © 2025 Lake Michigan Power Leagues
         </p>
       </div>
     </footer>

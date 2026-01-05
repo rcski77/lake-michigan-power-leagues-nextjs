@@ -19,10 +19,10 @@ export default function LocationsPage() {
       <main className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {locations.map((loc) => (
-            <div key={loc.name} className="bg-white border-2 border-blue-200 rounded-xl shadow-xl p-6 flex flex-col gap-4">
+            <div key={loc.name} className="bg-white border-2 border-red-200 rounded-xl shadow-xl p-6 flex flex-col gap-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-900">{loc.name}</h2>
+                  <h2 className="text-2xl font-bold text-red-900">{loc.name}</h2>
                   <p className="text-sm text-gray-600">Courts {loc.courts}</p>
                 </div>
                 <Link
@@ -31,7 +31,7 @@ export default function LocationsPage() {
                   rel="noopener noreferrer"
                   aria-label="Open in Google Maps"
                   title="Open in Google Maps"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-red-200 text-red-700 hover:bg-red-50 hover:border-red-300 p-2 focus:outline-none focus:ring-2 focus:ring-red-300"
                 >
                   {/* Map pin icon (outline) */}
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -52,8 +52,8 @@ export default function LocationsPage() {
               </div>
 
               <div className="grid grid-cols-1 gap-3">
-                <div className="grid grid-cols-1 border-2 border-blue-300 rounded-lg overflow-hidden">
-                  <div className="p-3 bg-blue-50 font-bold text-blue-900">Seating</div>
+                <div className="grid grid-cols-1 border-2 border-red-300 rounded-lg overflow-hidden">
+                  <div className="p-3 bg-red-50 font-bold text-red-900">Seating</div>
                   <div className="p-3 bg-white text-gray-800">
                     <div className="flex items-start gap-2">
                       {loc.seatingAvailable && <span className="text-green-600" aria-hidden="true">✓</span>}
@@ -61,8 +61,8 @@ export default function LocationsPage() {
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 border-2 border-blue-300 rounded-lg overflow-hidden">
-                  <div className="p-3 bg-blue-50 font-bold text-blue-900">Apparel</div>
+                <div className="grid grid-cols-1 border-2 border-red-300 rounded-lg overflow-hidden">
+                  <div className="p-3 bg-red-50 font-bold text-red-900">Apparel</div>
                   <div className="p-3 bg-white text-gray-800">
                     <div className="flex items-start gap-2">
                       {loc.apparel && <span className="text-green-600" aria-hidden="true">✓</span>}
@@ -72,8 +72,8 @@ export default function LocationsPage() {
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 border-2 border-blue-300 rounded-lg overflow-hidden">
-                  <div className="p-3 bg-blue-50 font-bold text-blue-900">Concessions</div>
+                <div className="grid grid-cols-1 border-2 border-red-300 rounded-lg overflow-hidden">
+                  <div className="p-3 bg-red-50 font-bold text-red-900">Concessions</div>
                   <div className="p-3 bg-white text-gray-800">
                     <div className="flex items-start gap-2">
                       {loc.concessions && <span className="text-green-600" aria-hidden="true">✓</span>}
