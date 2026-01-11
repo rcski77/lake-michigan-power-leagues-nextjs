@@ -84,7 +84,7 @@ export default function Navbar() {
             >
               <button
                 onClick={() => setRegistrationOpen(!registrationOpen)}
-                className={`transition-colors font-medium py-2 px-4 ${registrationOpen ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}
+                className={`transition-colors font-medium ${registrationOpen ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}
               >
                 Registration
               </button>
