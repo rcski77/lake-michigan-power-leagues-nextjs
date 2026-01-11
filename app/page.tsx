@@ -118,22 +118,19 @@ export default async function Home() {
         title="Lake Michigan Power Leagues"
         subtitle="West Michigan & NW Indiana"
       />
-      
+
       {/* Navigation Cards Section - Light Blue Background */}
       <section className="bg-blue-50 py-12">
         <div className="max-w-7xl mx-auto px-4">
           {/* Navigation Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card title="Schedule" link="/tournament-information#schedule" />
-          {leagues[0]?.hotelInfoLink && (
-            <Card title="Hotel Information" link={leagues[0].hotelInfoLink} />
-          )}
-          <Card
-            title="Tickets/Admission"
-            link="https://iplexsports.com/event/dli94fTSUUPUj5ko"
-          />
-          <Card title="Locations" link="/locations" />
-        </div>
+            <Card title="Schedule" link="/information#schedule" />
+            {leagues[0]?.hotelInfoLink && (
+              <Card title="Hotel Information" link={leagues[0].hotelInfoLink} />
+            )}
+            <Card title="Information/Rules" link="/information" />
+            <Card title="Locations" link="/locations" />
+          </div>
         </div>
       </section>
 
@@ -142,153 +139,156 @@ export default async function Home() {
       {/* Tournament Details Section - White Background */}
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4">
-        {/* Tournament Details - Loop through all leagues */}
-        {leagues.map((leagueData, index) => (
-          <div key={index} className="grid grid-cols-1 gap-8 mb-8">
-            <div>
-              <div className="bg-white border-2 border-red-200 rounded-xl shadow-xl p-8 md:p-12 mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-red-900">
-                  {leagueData.title}
-                </h2>
-                {(leagueData.startDate || leagueData.endDate) && (
-                  <p className="text-2xl font-semibold text-center text-red-700 mb-6">
-                    {formatDateRange(leagueData.startDate, leagueData.endDate)}
+          {/* Tournament Details - Loop through all leagues */}
+          {leagues.map((leagueData, index) => (
+            <div key={index} className="grid grid-cols-1 gap-8 mb-8">
+              <div>
+                <div className="bg-white border-2 border-red-200 rounded-xl shadow-xl p-8 md:p-12 mb-12">
+                  <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-red-900">
+                    {leagueData.title}
+                  </h2>
+                  {(leagueData.startDate || leagueData.endDate) && (
+                    <p className="text-2xl font-semibold text-center text-red-700 mb-6">
+                      {formatDateRange(
+                        leagueData.startDate,
+                        leagueData.endDate
+                      )}
+                    </p>
+                  )}
+                  <p className="text-center text-lg mb-8 text-gray-700">
+                    {leagueData.location || "Grand Rapids, MI"}
                   </p>
-                )}
-                <p className="text-center text-lg mb-8 text-gray-700">
-                  {leagueData.location || "Grand Rapids, MI"}
-                </p>
 
-                <div className="max-w-3xl mx-auto space-y-3 mb-10">
-                  {leagueData.entryFee && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                      <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
-                        ENTRY FEE:
+                  <div className="max-w-3xl mx-auto space-y-3 mb-10">
+                    {leagueData.entryFee && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                          ENTRY FEE:
+                        </div>
+                        <div className="p-4 bg-white text-black">
+                          ${leagueData.entryFee.toFixed(2)}
+                        </div>
                       </div>
-                      <div className="p-4 bg-white text-black">
-                        ${leagueData.entryFee.toFixed(2)}
+                    )}
+                    {leagueData.entryDeadline && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                          ENTRY DEADLINE:
+                        </div>
+                        <div className="p-4 bg-white text-black">
+                          {formatDate(leagueData.entryDeadline)}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {leagueData.entryDeadline && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                      <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
-                        ENTRY DEADLINE:
+                    )}
+                    {leagueData.registrationLink && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                          REGISTRATION:
+                        </div>
+                        <div className="p-4 bg-white text-black font-bold">
+                          <a
+                            href={leagueData.registrationLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-red-600 hover:text-red-800 hover:underline transition-colors"
+                          >
+                            Register Here
+                          </a>
+                        </div>
                       </div>
-                      <div className="p-4 bg-white text-black">
-                        {formatDate(leagueData.entryDeadline)}
+                    )}
+                    {leagueData.rules && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                          RULES:
+                        </div>
+                        <div className="p-4 bg-white text-black">
+                          {leagueData.rules}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {leagueData.registrationLink && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                      <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
-                        REGISTRATION:
-                      </div>
-                      <div className="p-4 bg-white text-black font-bold">
-                        <a
-                          href={leagueData.registrationLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-red-600 hover:text-red-800 hover:underline transition-colors"
-                        >
-                          Register Here
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                  {leagueData.rules && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                      <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
-                        RULES:
-                      </div>
-                      <div className="p-4 bg-white text-black">
-                        {leagueData.rules}
+                    )}
+                  </div>
+
+                  {/* Age Groups Cards */}
+                  {leagueData.ageGroups && leagueData.ageGroups.length > 0 && (
+                    <div className="mb-10">
+                      <h3 className="text-2xl font-bold text-center mb-6 text-red-900">
+                        Age Groups
+                      </h3>
+                      <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+                        {leagueData.ageGroups.map((group, index) => (
+                          <div
+                            key={index}
+                            className="bg-linear-to-br from-red-50 to-white border-2 border-red-300 rounded-lg p-5 shadow-md hover:shadow-lg transition-shadow"
+                          >
+                            <h4 className="text-xl font-bold text-red-900 mb-2">
+                              {group.ageGroup}
+                            </h4>
+                            {group.notes && (
+                              <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
+                                {group.notes}
+                              </p>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
                 </div>
-
-                {/* Age Groups Cards */}
-                {leagueData.ageGroups && leagueData.ageGroups.length > 0 && (
-                  <div className="mb-10">
-                    <h3 className="text-2xl font-bold text-center mb-6 text-red-900">
-                      Age Groups
-                    </h3>
-                    <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-                      {leagueData.ageGroups.map((group, index) => (
-                        <div
-                          key={index}
-                          className="bg-gradient-to-br from-red-50 to-white border-2 border-red-300 rounded-lg p-5 shadow-md hover:shadow-lg transition-shadow"
-                        >
-                          <h4 className="text-xl font-bold text-red-900 mb-2">
-                            {group.ageGroup}
-                          </h4>
-                          {group.notes && (
-                            <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
-                              {group.notes}
-                            </p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       </section>
 
       {/* Contact Section - Light Blue Background */}
       <section className="bg-blue-50 py-12">
         <div className="max-w-7xl mx-auto px-4">
-        {/* Contact Information - Displayed once after all leagues */}
-        <div className="max-w-4xl mx-auto space-y-4 text-base leading-relaxed text-gray-700 bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-red-900 mb-4">
-            Contact Information
-          </h2>
-          <div className="space-y-3">
-            <p>
-              <span className="font-semibold text-red-900">Email:</span>{" "}
-              <a
-                href="mailto:admin@lkmichpl.org"
-                className="text-red-600 hover:text-red-800 hover:underline transition-colors"
-              >
-                admin@lkmichpl.org
-              </a>
-            </p>
-            <p>
-              <span className="font-semibold text-red-900">Phone:</span> (616)
-              259-5306
-            </p>
-            <p className="pt-2">
-              Please contact Adam Rykse for more information about the Lake
-              Michigan Power Leagues.
-            </p>
+          {/* Contact Information - Displayed once after all leagues */}
+          <div className="max-w-4xl mx-auto space-y-4 text-base leading-relaxed text-gray-700 bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold text-red-900 mb-4">
+              Contact Information
+            </h2>
+            <div className="space-y-3">
+              <p>
+                <span className="font-semibold text-red-900">Email:</span>{" "}
+                <a
+                  href="mailto:admin@lkmichpl.org"
+                  className="text-red-600 hover:text-red-800 hover:underline transition-colors"
+                >
+                  admin@lkmichpl.org
+                </a>
+              </p>
+              <p>
+                <span className="font-semibold text-red-900">Phone:</span> (616)
+                259-5306
+              </p>
+              <p className="pt-2">
+                Please contact Adam Rykse for more information about the Lake
+                Michigan Power Leagues.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* AAU Logos */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-10">
-          <div className="relative w-80 h-40">
-            <Image
-              src="/aau_logo.png"
-              alt="AAU Logo"
-              fill
-              className="object-contain"
-            />
+          {/* AAU Logos */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-10">
+            <div className="relative w-80 h-40">
+              <Image
+                src="/aau_logo.png"
+                alt="AAU Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-80 h-40">
+              <Image
+                src="/aauvball_logo.png"
+                alt="AAU Volleyball Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
-          <div className="relative w-80 h-40">
-            <Image
-              src="/aauvball_logo.png"
-              alt="AAU Volleyball Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
         </div>
       </section>
       <Footer />
