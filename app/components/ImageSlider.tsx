@@ -4,11 +4,10 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const SLIDER_IMAGES = [
-  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%281%29.jpg',
-  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%282%29.jpg',
-  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%283%29.jpg',
-  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%284%29.jpg',
-  'https://2mtrfo5jo8mxmvit.public.blob.vercel-storage.com/frontpage-slider/frontpage%20%285%29.jpg',
+  'https://rgfyvxwdfpkoj7p1.public.blob.vercel-storage.com/frontpage-slider/483980978.jpg',
+  'https://rgfyvxwdfpkoj7p1.public.blob.vercel-storage.com/frontpage-slider/DSC_8990.JPG',
+  'https://rgfyvxwdfpkoj7p1.public.blob.vercel-storage.com/frontpage-slider/IMG_7941.JPG',
+  'https://rgfyvxwdfpkoj7p1.public.blob.vercel-storage.com/frontpage-slider/IMG_7990.JPG',
 ];
 
 export default function ImageSlider() {

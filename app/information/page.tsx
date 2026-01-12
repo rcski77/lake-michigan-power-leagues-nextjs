@@ -32,7 +32,7 @@ export default function InformationPage() {
       <main className="max-w-6xl mx-auto px-4 py-10">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Navigation Sidebar */}
-          <nav className="md:w-48 flex-shrink-0">
+          <nav className="md:w-48 shrink-0">
             <div className="bg-white border-2 border-red-200 rounded-xl shadow-lg overflow-hidden">
               {navigationItems.map((item) => (
                 <button
@@ -202,28 +202,34 @@ export default function InformationPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-red-800 mb-2">Facility Care</h3>
-                    <p>Teams are responsible for keeping their designated areas clean. Please dispose of trash properly and respect facility equipment.</p>
+                    <p>Teams are responsible for keeping their designated areas clean. Please dispose of trash properly and respect facility equipment. Keep food to a minimum and keep it in your bag. No team areas for food and no tables are provided.</p>
                   </div>
                   <div>
                     <h3 className="font-bold text-red-800 mb-2">Membership Requirements</h3>
-                    <p>All players and coaches must be registered members to participate in facility play.</p>
+                    <p>All players and coaches must be registered AAU members to participate in the power league.</p>
                   </div>
                   <div>
                     <h3 className="font-bold text-red-800 mb-2">Facility Hours</h3>
-                    <p>Please check with your facility for specific hours and availability. Matches may have restricted time slots.</p>
+                    <p>Doors will open 1 hour prior to the first scheduled match. Dunes is on Central Time (1 hour behind Michigan).</p>
                   </div>
                   <div>
                     <h3 className="font-bold text-red-800 mb-2">Equipment</h3>
-                    <p>Facility-owned equipment must be used and returned in the same condition. Teams are responsible for any damage caused by their members.</p>
+                    <p>Volleyballs will be provided for warm-ups. Facility-owned equipment must be used and returned in the same condition. Teams are responsible for any damage caused by their members.</p>
                   </div>
                   <div>
                     <h3 className="font-bold text-red-800 mb-2">Spectators</h3>
-                    <p>Spectators are welcome and encouraged. However, they must respect player safety and not interfere with play.</p>
+                    <ul className="list-disc list-inside space-y-2">
+                      <li>Daily admission is $10 for adults, $5 for students and senior citizens.</li>
+                      <li>Maximum $25 per family (two adults and their children only).</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-red-800 mb-2">Facility List</h3>
+                    <a href="/locations" className="inline-block px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">
+                      Facility Locations and Info
+                    </a>
                   </div>
                 </div>
-                <a href="https://www.lkmichpl.org/facility-rules" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">
-                  Full Facility Rules
-                </a>
               </section>
             )}
 
