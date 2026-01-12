@@ -50,10 +50,10 @@ export default async function LocationsPage() {
       <main className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {sanityLocations.map((loc) => (
-            <div key={loc._id} className="bg-white border-2 border-red-200 rounded-xl shadow-xl p-6 flex flex-col gap-4">
+            <div key={loc._id} className="bg-white border-2 border-orange-200 rounded-xl shadow-xl p-6 flex flex-col gap-4">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-red-900">{loc.locationName}</h2>
+                  <h2 className="text-2xl font-bold text-orange-900">{loc.locationName}</h2>
                 </div>
                 <Link
                   href={makeMapUrl([loc.addressLine1, loc.addressLine2])}
@@ -61,7 +61,7 @@ export default async function LocationsPage() {
                   rel="noopener noreferrer"
                   aria-label="Open in Google Maps"
                   title="Open in Google Maps"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-red-200 text-red-700 hover:bg-red-50 hover:border-red-300 p-2 focus:outline-none focus:ring-2 focus:ring-red-300"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-orange-200 text-orange-700 hover:bg-orange-50 hover:border-orange-300 p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
                 >
                   {/* Map pin icon (outline) */}
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -81,8 +81,8 @@ export default async function LocationsPage() {
               </div>
 
               <div className="grid grid-cols-1 gap-3">
-                <div className="grid grid-cols-1 border-2 border-red-300 rounded-lg overflow-hidden">
-                  <div className="p-3 bg-red-50 font-bold text-red-900">Seating</div>
+                <div className="grid grid-cols-1 border-2 border-orange-300 rounded-lg overflow-hidden">
+                  <div className="p-3 bg-orange-50 font-bold text-orange-900">Seating</div>
                   <div className="p-3 bg-white text-gray-800">
                     <div className="flex items-start gap-2">
                       {loc.seating && <span className="text-green-600" aria-hidden="true">✓</span>}
@@ -90,8 +90,8 @@ export default async function LocationsPage() {
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 border-2 border-red-300 rounded-lg overflow-hidden">
-                  <div className="p-3 bg-red-50 font-bold text-red-900">Concessions</div>
+                <div className="grid grid-cols-1 border-2 border-orange-300 rounded-lg overflow-hidden">
+                  <div className="p-3 bg-orange-50 font-bold text-orange-900">Concessions</div>
                   <div className="p-3 bg-white text-gray-800">
                     <div className="flex items-start gap-2">
                       {loc.concessions && <span className="text-green-600" aria-hidden="true">✓</span>}
@@ -102,8 +102,8 @@ export default async function LocationsPage() {
                   </div>
                 </div>
                 {loc.paymentMethods && loc.paymentMethods.length > 0 && (
-                  <div className="grid grid-cols-1 border-2 border-red-300 rounded-lg overflow-hidden">
-                    <div className="p-3 bg-red-50 font-bold text-red-900">Payment Methods</div>
+                  <div className="grid grid-cols-1 border-2 border-orange-300 rounded-lg overflow-hidden">
+                    <div className="p-3 bg-orange-50 font-bold text-orange-900">Payment Methods</div>
                     <div className="p-3 bg-white text-gray-800">
                       <div className="flex flex-wrap items-center gap-3">
                         {loc.paymentMethods.map((method) => (

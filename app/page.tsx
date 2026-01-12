@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageHeader from "./components/PageHeader";
 import WaveDivider from "./components/WaveDivider";
+import Card from "./components/Card";
+import FacebookFeed from "./components/FacebookFeed";
 import { client } from "../src/sanity/client";
 
 // Revalidate page every 5 minutes (ISR - Incremental Static Regeneration)
@@ -145,9 +147,9 @@ export default async function Home() {
         {motd?.active && motd?.message && (
           <section className="bg-white py-6">
             <div className="max-w-7xl mx-auto px-4">
-              <div className="border-2 border-red-300 bg-red-50 rounded-xl p-4 md:p-5 flex items-start gap-3">
+              <div className="border-2 border-orange-300 bg-orange-50 rounded-xl p-4 md:p-5 flex items-start gap-3">
                 <svg
-                  className="w-6 h-6 text-red-700 mt-0.5"
+                  className="w-6 h-6 text-orange-700 mt-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -161,7 +163,7 @@ export default async function Home() {
                   />
                 </svg>
                 <div>
-                  <p className="text-red-900 font-semibold mb-1">
+                  <p className="text-orange-900 font-semibold mb-1">
                     Announcement
                   </p>
                   <p className="text-gray-900">{motd.message}</p>
@@ -193,9 +195,9 @@ export default async function Home() {
       {motd?.active && motd?.message && (
         <section className="bg-white py-6">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="border-2 border-red-300 bg-red-50 rounded-xl p-4 md:p-5 flex items-start gap-3">
+            <div className="border-2 border-orange-300 bg-orange-50 rounded-xl p-4 md:p-5 flex items-start gap-3">
               <svg
-                className="w-6 h-6 text-red-700 mt-0.5"
+                className="w-6 h-6 text-orange-700 mt-0.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -209,7 +211,7 @@ export default async function Home() {
                 />
               </svg>
               <div>
-                <p className="text-red-900 font-semibold mb-1">Announcement</p>
+                <p className="text-orange-900 font-semibold mb-1">Announcement</p>
                 <p className="text-gray-900">{motd.message}</p>
               </div>
             </div>
@@ -257,19 +259,22 @@ export default async function Home() {
 
       <WaveDivider />
 
-      {/* Tournament Details Section - White Background */}
+      {/* Tournament Details Section - White Background with Facebook Sidebar */}
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4">
-          {/* Tournament Details - Loop through all leagues */}
-          {leagues.map((leagueData, index) => (
-            <div key={index} className="grid grid-cols-1 gap-8 mb-8">
-              <div>
-                <div className="bg-white border-2 border-red-200 rounded-xl shadow-xl p-8 md:p-12 mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-red-900">
+          <div className="grid lg:grid-cols-[2fr_1fr] gap-8 items-start">
+            <div className="space-y-8">
+              {/* Tournament Details - Loop through all leagues */}
+              {leagues.map((leagueData, index) => (
+                <div
+                  key={index}
+                  className="bg-white border-2 border-orange-200 rounded-xl shadow-xl p-8 md:p-12"
+                >
+                  <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-orange-900">
                     {leagueData.title}
                   </h2>
                   {(leagueData.startDate || leagueData.endDate) && (
-                    <p className="text-2xl font-semibold text-center text-red-700 mb-6">
+                    <p className="text-2xl font-semibold text-center text-orange-700 mb-6">
                       {formatDateRange(
                         leagueData.startDate,
                         leagueData.endDate
@@ -282,8 +287,8 @@ export default async function Home() {
 
                   <div className="max-w-3xl mx-auto space-y-3 mb-10">
                     {leagueData.entryFee && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-orange-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-orange-50 font-bold border-r-2 border-orange-300 text-orange-900">
                           ENTRY FEE:
                         </div>
                         <div className="p-4 bg-white text-black">
@@ -292,8 +297,8 @@ export default async function Home() {
                       </div>
                     )}
                     {leagueData.entryDeadline && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-orange-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-orange-50 font-bold border-r-2 border-orange-300 text-orange-900">
                           ENTRY DEADLINE:
                         </div>
                         <div className="p-4 bg-white text-black">
@@ -302,8 +307,8 @@ export default async function Home() {
                       </div>
                     )}
                     {leagueData.registrationLink && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-orange-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-orange-50 font-bold border-r-2 border-orange-300 text-orange-900">
                           REGISTRATION:
                         </div>
                         <div className="p-4 bg-white text-black font-bold">
@@ -311,16 +316,15 @@ export default async function Home() {
                             href={leagueData.registrationLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-red-600 hover:text-red-800 hover:underline transition-colors"
-                          >
+                            className="text-orange-600 hover:text-orange-800 hover:underline transition-colors">
                             Register Here
                           </a>
                         </div>
                       </div>
                     )}
                     {leagueData.rules && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-red-300 rounded-lg overflow-hidden">
-                        <div className="p-4 bg-red-50 font-bold border-r-2 border-red-300 text-red-900">
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-orange-300 rounded-lg overflow-hidden">
+                        <div className="p-4 bg-orange-50 font-bold border-r-2 border-orange-300 text-orange-900">
                           RULES:
                         </div>
                         <div className="p-4 bg-white text-black">
@@ -333,16 +337,16 @@ export default async function Home() {
                   {/* Age Groups Cards */}
                   {leagueData.ageGroups && leagueData.ageGroups.length > 0 && (
                     <div className="mb-10">
-                      <h3 className="text-2xl font-bold text-center mb-6 text-red-900">
+                      <h3 className="text-2xl font-bold text-center mb-6 text-orange-900">
                         Age Groups
                       </h3>
                       <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
                         {leagueData.ageGroups.map((group, index) => (
                           <div
                             key={index}
-                            className="bg-linear-to-br from-red-50 to-white border-2 border-red-300 rounded-lg p-5 shadow-md hover:shadow-lg transition-shadow"
+                            className="bg-linear-to-br from-orange-50 to-white border-2 border-orange-300 rounded-lg p-5 shadow-md hover:shadow-lg transition-shadow"
                           >
-                            <h4 className="text-xl font-bold text-red-900 mb-2">
+                            <h4 className="text-xl font-bold text-orange-900 mb-2">
                               {group.ageGroup}
                             </h4>
                             {group.notes && (
@@ -356,9 +360,13 @@ export default async function Home() {
                     </div>
                   )}
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+
+            <aside className="p-0 md:p-0 lg:sticky top-24 space-y-3">
+              <FacebookFeed />
+            </aside>
+          </div>
         </div>
       </section>
 
@@ -367,21 +375,21 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4">
           {/* Contact Information - Displayed once after all leagues */}
           <div className="max-w-4xl mx-auto space-y-4 text-base leading-relaxed text-gray-700 bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold text-red-900 mb-4">
+            <h2 className="text-2xl font-bold text-orange-900 mb-4">
               Contact Information
             </h2>
             <div className="space-y-3">
               <p>
-                <span className="font-semibold text-red-900">Email:</span>{" "}
+                <span className="font-semibold text-orange-900">Email:</span>{" "}
                 <a
                   href="mailto:admin@lkmichpl.org"
-                  className="text-red-600 hover:text-red-800 hover:underline transition-colors"
+                  className="text-orange-600 hover:text-orange-800 hover:underline transition-colors"
                 >
                   admin@lkmichpl.org
                 </a>
               </p>
               <p>
-                <span className="font-semibold text-red-900">Phone:</span> (616)
+                <span className="font-semibold text-orange-900">Phone:</span> (616)
                 259-5306
               </p>
               <p className="pt-2">
@@ -403,10 +411,18 @@ export default async function Home() {
             </div>
             <div className="relative w-80 h-40">
               <Image
+                src="/LOVBIndigo.svg"
+                alt="LOVB Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-80 h-40">
+              <Image
                 src="/aauvball_logo.png"
                 alt="AAU Volleyball Logo"
                 fill
-                className="object-contain"
+                className="object-contain mix-blend-multiply"
               />
             </div>
           </div>
@@ -414,83 +430,5 @@ export default async function Home() {
       </section>
       <Footer />
     </div>
-  );
-}
-
-function Card({
-  title,
-  link,
-  size = "default",
-}: {
-  title: string;
-  link: string;
-  size?: "default" | "small";
-}) {
-  const padding = size === "small" ? "p-3" : "p-8";
-  const iconWrap = size === "small" ? "w-9 h-9" : "w-16 h-16";
-  const iconSize = size === "small" ? "w-4 h-4" : "w-8 h-8";
-  const titleSize = size === "small" ? "text-m" : "text-xl";
-  const readSize = size === "small" ? "text-sm" : "";
-  const isSmall = size === "small";
-  return (
-    <a
-      href={link}
-      className={`relative block rounded-xl ${padding} shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center group overflow-hidden ${
-        isSmall
-          ? "bg-red-700 border border-red-700"
-          : "bg-white border border-gray-200"
-      }`}
-    >
-      <div
-        className={`absolute inset-0 transition-opacity duration-300 ${
-          isSmall
-            ? "bg-linear-to-br from-red-700 to-transparent opacity-0 group-hover:opacity-100"
-            : "bg-linear-to-br from-red-50 to-transparent opacity-0 group-hover:opacity-100"
-        }`}
-      ></div>
-      <div className="relative z-10">
-        <div
-          className={`${iconWrap} mx-auto mb-4 rounded-full flex items-center justify-center transition-colors duration-300 ${
-            isSmall
-              ? "bg-white group-hover:bg-gray-100"
-              : "bg-red-100 group-hover:bg-red-600"
-          }`}
-        >
-          <svg
-            className={`${iconSize} transition-colors duration-300 ${
-              isSmall
-                ? "text-red-600 group-hover:text-red-700"
-                : "text-red-600 group-hover:text-white"
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </div>
-        <h2
-          className={`${titleSize} font-bold ${size === "small" ? "mb-2" : "mb-3"} transition-colors duration-300 ${
-            isSmall
-              ? "text-white group-hover:text-gray-100"
-              : "text-gray-900 group-hover:text-red-700"
-          }`}
-        >
-          {title}
-        </h2>
-        {size !== "small" && (
-          <span
-            className={`text-red-600 font-semibold group-hover:underline ${readSize}`}
-          >
-            Read more »
-          </span>
-        )}
-      </div>
-    </a>
   );
 }
