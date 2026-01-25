@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import PageHeader from "./components/PageHeader";
 import WaveDivider from "./components/WaveDivider";
 import Card from "./components/Card";
-import FacebookFeed from "./components/FacebookFeed";
 import { client } from "../src/sanity/client";
 
 // Revalidate page every 5 minutes (ISR - Incremental Static Regeneration)
@@ -262,7 +261,7 @@ export default async function Home() {
       {/* Tournament Details Section - White Background with Facebook Sidebar */}
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-[2fr_1fr] gap-8 items-start">
+          <div className="grid grid-cols-1 gap-8 items-start">
             <div className="space-y-8">
               {/* Tournament Details - Loop through all leagues */}
               {leagues.map((leagueData, index) => (
@@ -362,10 +361,6 @@ export default async function Home() {
                 </div>
               ))}
             </div>
-
-            <aside className="p-0 md:p-0 lg:sticky top-24 space-y-3">
-              <FacebookFeed />
-            </aside>
           </div>
         </div>
       </section>
